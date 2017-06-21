@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="MSlwk\ICatalogue\Api\CatalogueInterface"
+                type="MSlwk\ICatalogue\Model\Catalogue"/>
+    <preference for="MSlwk\ICatalogue\Api\Catalogue\ImageInterface"
+                type="MSlwk\ICatalogue\Model\ResourceModel\Catalogue\Relation\Image"/>
+    <preference for="MSlwk\ICatalogue\Api\Catalogue\StoreInterface"
+                type="MSlwk\ICatalogue\Model\ResourceModel\Catalogue\Relation\Store"/>
+
+    <virtualType name="MSlwk\ICatalogue\GridFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter
+                </item>
+                <item name="fulltext" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MSlwk\ICatalogue\PostGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">
+                MSlwk\ICatalogue\Model\ResourceModel\Catalogue\Collection
+            </argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MSlwk\ICatalogue\GridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="MSlwk\ICatalogue\Model\ResourceModel\ICatalogue\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mslwk_icatalogue</argument>
+            <argument name="eventPrefix" xsi:type="string">mslwk_icatalogue_post_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">post_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">MSlwk\ICatalogue\Model\ResourceModel\Catalogue</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mslwk_icatalogue_post_listing_data_source" xsi:type="string">
+                    MSlwk\ICatalogue\Model\ResourceModel\ICatalogue\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>
