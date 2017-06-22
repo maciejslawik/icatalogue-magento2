@@ -1,18 +1,11 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="MSlwk_ICatalogue::catalogue"
+        <add id="MSlwk_ICatalogue::catalogue_manage"
              title="iCatalogue"
              module="MSlwk_ICatalogue"
              sortOrder="9999"
-             resource="Magento_Backend::content" />
-
-        <add id="MSlwk_ICatalogue::catalogue_manage"
-             title="Catalogues"
-             module="MSlwk_ICatalogue"
-             sortOrder="1"
              resource="Magento_Backend::content"
-             parent="MSlwk_ICatalogue::catalogue"
              action="icatalogue/catalogue/grid"
         />
     </menu>

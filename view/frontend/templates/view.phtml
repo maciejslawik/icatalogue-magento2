@@ -1,0 +1,20 @@
+<?php
+/** @var \MSlwk\ICatalogue\Block\View $block */
+$width = $block->getFlipbookWidth();
+$height = $block->getFlipbookHeight();
+?>
+
+<div id="icatalogue">
+    <div class="flipbook-viewport">
+        <div class="container">
+            <div class="flipbook" data-mage-init='{"icatalogue":{
+                "height":<?php echo $height ?>,
+                 "width":"<?php echo $width ?>"
+                 }}'>
+                <?php foreach ($block->getImages() as $image) : ?>
+                    <div style="background-image:url('<?php echo $image['url'] ?>')"></div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+</div>

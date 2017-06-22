@@ -92,6 +92,23 @@ class Form extends Generic
                 'class' => 'fieldset-wide'
             ]
         );
+
+        if ($catalogue->getId()) {
+            $url = '/icatalogue/catalogue/view/id/' . $catalogue->getId();
+            $catalogue->setUrl($url);
+            $fieldsetGeneral->addField(
+                'url',
+                'text',
+                [
+                    'name' => 'url',
+                    'readonly' => true,
+                    'label' => __('URL'),
+                    'title' => __('URL'),
+                    'after_element_html' => '<a href=' . $url . '>'. __('View').'</a>'
+                ]
+            );
+        }
+
         $fieldsetGeneral->addField(
             CatalogueInterface::TITLE,
             'text',
