@@ -10,12 +10,18 @@ namespace MSlwk\ICatalogue\Controller\Catalogue;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use MSlwk\ICatalogue\Model\CatalogueFactory;
 use MSlwk\ICatalogue\Model\Catalogue;
 use MSlwk\ICatalogue\Model\ResourceModel\Catalogue as CatalogueResource;
 
+/**
+ * Class View
+ *
+ * @package MSlwk\ICatalogue\Controller\Catalogue
+ */
 class View extends Action
 {
     /**
@@ -55,6 +61,7 @@ class View extends Action
 
     /**
      * @return Page
+     * @throws NotFoundException
      */
     public function execute()
     {
@@ -64,11 +71,7 @@ class View extends Action
         $id = $this->getRequest()->getParam('id');
         $this->catalogueResource->load($catalogue, $id);
         if (!$catalogue->getId()) {
-            $this->messageManager->addErrorMessage(__('The requested catalogue doesn\'t exist'));
-            /** @var Redirect $resultRedirect */
-            $resultRedirect = $this->resultRedirectFactory->create();
-            return $resultRedirect->setPath('/');
-
+            throw new NotFoundException(__('The requested catalogue doesn\'t exist'));
         }
 
         $resultPage = $this->resultPageFactory->create();
