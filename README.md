@@ -1,4 +1,7 @@
-## Interactive Catalogue Magento2 extension ##
+[![Latest Stable Version](https://poser.pugx.org/mslwk/icatalogue-magento2/v/stable)](https://packagist.org/packages/mslwk/icatalogue-magento2)
+[![License](https://poser.pugx.org/mslwk/icatalogue-magento2/license)](https://packagist.org/packages/mslwk/icatalogue-magento2)
+
+# Interactive Catalogue Magento2 extension #
 
 The extension allows you to create interactive catalogues (flipbook-styled).
 
