@@ -8,6 +8,7 @@
 
 namespace MSlwk\ICatalogue\Block;
 
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\View\Element\Template\Context;
@@ -84,7 +85,8 @@ class View extends Template
         $images = [];
         foreach ($this->getCatalogue()->getImages() as $image) {
             $images[] = [
-                'url' => '/media/' . $image['image_uri']
+                'url' => $this->_storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA)
+                    . $image['image_uri']
             ];
         }
         return $images;

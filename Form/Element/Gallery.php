@@ -12,6 +12,8 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Escaper;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\CollectionFactory;
+use Magento\Framework\UrlInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class Gallery
@@ -21,19 +23,27 @@ use Magento\Framework\Data\Form\Element\CollectionFactory;
 class Gallery extends AbstractElement
 {
     /**
+     * @var StoreManagerInterface
+     */
+    private $storeManager;
+
+    /**
      * @param Factory $factoryElement
      * @param CollectionFactory $factoryCollection
      * @param Escaper $escaper
+     * @param StoreManagerInterface $storeManager
      * @param array $data
      */
     public function __construct(
         Factory $factoryElement,
         CollectionFactory $factoryCollection,
         Escaper $escaper,
+        StoreManagerInterface $storeManager,
         $data = []
     ) {
         parent::__construct($factoryElement, $factoryCollection, $escaper, $data);
         $this->setType('file');
+        $this->storeManager = $storeManager;
     }
 
     /**
@@ -68,7 +78,7 @@ class Gallery extends AbstractElement
             foreach ($this->getValue() as $image) {
                 $i++;
                 $html .= '<tr>';
-                $url = '/media/' . $image['image_uri'];
+                $url = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . $image['image_uri'];
                 $html .= '<td class="gallery" align="center" style="vertical-align:bottom;">';
                 $html .= '<a href="' . $url . '" target="_blank" ';
                 $html .= 'onclick="imagePreview(\'' . $this->getHtmlId() . '_image_' . $image['image_id'] . '\');';
