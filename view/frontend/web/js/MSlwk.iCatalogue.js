@@ -9,7 +9,7 @@ define(
 
         init = function (config, element) {
             $(element).turn({
-                width: cfig.width,
+                width: config.width,
                 height: config.height,
                 elevation: 50,
                 gradients: true,
