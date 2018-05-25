@@ -2,6 +2,7 @@
   "name": "mslwk/icatalogue-magento2",
   "description": "Interactive catalogue module for Magento 2",
   "type": "magento2-module",
+  "version": "1.0.4",
   "license": [
     "MIT"
   ],
@@ -13,8 +14,11 @@
   ],
   "require": {
     "php": "^7.0.0",
-    "magento/framework": "^100.0.0",
-    "magento/module-backend": "^100.0.0"
+    "magento/framework": "*",
+    "magento/module-backend": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
   },
   "repositories": [
     {
