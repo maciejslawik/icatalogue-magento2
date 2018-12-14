@@ -2,6 +2,7 @@
 [![License](https://poser.pugx.org/mslwk/icatalogue-magento2/license)](https://packagist.org/packages/mslwk/icatalogue-magento2)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/maciejslawik/icatalogue-magento2/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maciejslawik/icatalogue-magento2/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/maciejslawik/icatalogue-magento2/badges/build.png?b=master)](https://scrutinizer-ci.com/g/maciejslawik/icatalogue-magento2/build-status/master)
+[![Total Downloads](https://poser.pugx.org/mslwk/icatalogue-magento2/downloads)](https://packagist.org/packages/mslwk/icatalogue-magento2)
 
 # Interactive Catalogue Magento2 extension #
 
